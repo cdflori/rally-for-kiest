@@ -1,0 +1,73 @@
+---
+interface Props {
+  /** Float over the page's first section (the home hero photo) instead of sitting on navy. */
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+
+const nav = [
+  { href: '/mission', label: 'Mission' },
+  { href: '/timeline', label: 'Timeline' },
+  { href: '/tracker', label: 'Tracker' },
+  { href: '/take-action', label: 'Take action' },
+  { href: '/join', label: 'Join' },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<header class:list={['text-line', overlay ? 'absolute inset-x-0 top-0 z-20' : 'bg-night']}>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
+    <a href="/" class="shrink-0" aria-label="Rally for Kiest, home">
+      <img src="/logo.png" alt="" width="492" height="373" class="h-12 w-auto sm:h-14" />
+    </a>
+
+    <nav aria-label="Main" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-[0.95rem] font-semibold">
+        {
+          nav.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={current === href ? 'page' : undefined}
+                class="py-2 underline-offset-8 decoration-rally decoration-2 hover:underline aria-[current=page]:underline"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {/* Small screens: a native disclosure, so the menu works without JavaScript. */}
+    <details class="group relative md:hidden">
+      <summary
+        class="flex cursor-pointer list-none items-center gap-2 rounded px-3 py-2 font-semibold [&::-webkit-details-marker]:hidden"
+      >
+        Menu
+        <svg class="size-4 transition-transform group-open:rotate-180" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </summary>
+      <ul
+        class="absolute right-0 z-20 mt-2 w-56 rounded-md bg-night py-2 shadow-xl ring-1 ring-line/15"
+      >
+        {
+          nav.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={current === href ? 'page' : undefined}
+                class="block px-4 py-2.5 font-semibold hover:bg-court aria-[current=page]:text-rally"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+</header>
