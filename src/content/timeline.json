@@ -1,0 +1,112 @@
+[
+  {
+    "id": "opening",
+    "sort": "1957-01-01",
+    "when": "Late 1950s",
+    "title": "Kiest Tennis Center opens",
+    "body": "The Dallas Tennis Association helps open the courts at Kiest Park in Oak Cliff and has been part of the center ever since.",
+    "kind": "history",
+    "sources": [{ "label": "Dallas Tennis Association history" }]
+  },
+  {
+    "id": "designation",
+    "sort": "1961-01-01",
+    "when": "1961",
+    "title": "Official tennis center designation",
+    "body": "The Dallas Tennis Association asks the Park Board to designate Kiest an official tennis center. The board approves.",
+    "kind": "history",
+    "sources": [{ "label": "Dallas Park Board records, 1961" }]
+  },
+  {
+    "id": "dtea",
+    "sort": "2001-01-01",
+    "when": "Early 2000s",
+    "title": "Free youth programming takes root",
+    "body": "The Dallas Tennis Education Academy (DTEA) begins offering free lessons, equipment, tutoring and mentorship to neighborhood kids. Over 25 years it grows to more than 1,000 kids a year, funded largely by grants from partners including the USTA Foundation and the Nowitzki Foundation.",
+    "kind": "community",
+    "sources": [{ "label": "Dallas Tennis Association" }]
+  },
+  {
+    "id": "contract-2018",
+    "sort": "2018-01-01",
+    "when": "2018",
+    "title": "DTA signs a concession contract with the city",
+    "body": "The Dallas Tennis Association signs a formal concession contract to manage Kiest Tennis Center.",
+    "kind": "process",
+    "sources": [{ "label": "City of Dallas concession contract, 2018" }]
+  },
+  {
+    "id": "impact-samuell",
+    "sort": "2021-01-01",
+    "when": "2021",
+    "title": "A private operator begins managing Dallas tennis centers",
+    "body": "Impact Activities, a for-profit company based in McKinney, receives its first Dallas tennis contract at Samuell Grand, and is later extended at Fretz and L.B. Houston in 2023.",
+    "kind": "process",
+    "sources": [{ "label": "City of Dallas Park and Recreation contracts" }]
+  },
+  {
+    "id": "bridge-2024",
+    "sort": "2024-04-01",
+    "when": "April 2024",
+    "title": "City extends DTA's contract as a bridge",
+    "body": "The city extends the Dallas Tennis Association's contract while it prepares a single RFP covering four tennis centers.",
+    "kind": "process",
+    "sources": [{ "label": "Administrative Action No. 24-5585" }]
+  },
+  {
+    "id": "rfp",
+    "sort": "2025-06-01",
+    "when": "2025",
+    "title": "Four tennis centers go out in one RFP",
+    "body": "RFP/Bid No. PKR-2025-00026989 bundles Kiest with Fretz, Samuell Grand and L.B. Houston. Proposals are scored 30 points for revenue to the city, 30 for experience, 30 for overall approach and 10 for community equity. DTA submits a proposal and is not selected.",
+    "kind": "process",
+    "sources": [{ "label": "RFP/Bid No. PKR-2025-00026989" }]
+  },
+  {
+    "id": "deferred",
+    "sort": "2026-03-26",
+    "when": "March and April 2026",
+    "title": "The Kiest contract is deferred twice",
+    "body": "The Park Board defers the Kiest portion of the contract on March 26 and again on April 16 as residents raise concerns.",
+    "kind": "process",
+    "sources": [{ "label": "Dallas Park and Recreation Board agendas, March 26 and April 16, 2026" }]
+  },
+  {
+    "id": "may-7",
+    "sort": "2026-05-07",
+    "when": "May 7, 2026",
+    "title": "Park Board moves the contract forward",
+    "body": "Residents, parents and students speak. Parks staff confirm on the record that the contract contains no enforceable protections for DTEA's free programs. The board votes to send the contract to City Council.",
+    "kind": "process",
+    "sources": [{ "label": "Dallas Park and Recreation Board meeting video, May 7, 2026" }]
+  },
+  {
+    "id": "council",
+    "sort": "2026-06-24",
+    "when": "June 24, 2026",
+    "title": "City Council rejects the Kiest contract",
+    "body": "After more than 2,100 residents sign a petition and community members testify, the council approves the contracts for the other three centers and votes down Kiest. The council directs a new RFP for Kiest with community involvement.",
+    "kind": "process",
+    "sources": [
+      { "label": "City Council Annotated Agenda, June 24, 2026, Item 60, File 26-1082: \"(1)(2)(3) APPROVED; (4) DID NOT PASS\"" }
+    ]
+  },
+  {
+    "id": "heritage",
+    "sort": "2026-09-15",
+    "when": "September 2026",
+    "title": "Third annual Hispanic Heritage Month celebration",
+    "body": "What began with 15 kids three years ago brings more than 100 people to the courts: free play for kids ages 4 to 18, music, cultural dance performances, food and papel picado strung over the patio.",
+    "kind": "community",
+    "sources": [{ "label": "Rally for Kiest" }]
+  },
+  {
+    "id": "listening",
+    "sort": "2026-10-15",
+    "when": "October 2026",
+    "title": "Coalition asks for a listening session at Kiest",
+    "body": "With a new RFP expected in November and a new pickleball requirement in the draft criteria, the coalition asks the Parks Department to hold one community listening session at Kiest before the criteria are final.",
+    "kind": "community",
+    "sources": [{ "label": "Rally for Kiest letter to Deputy Mayor Pro Tem Maxie Johnson, October 2026" }]
+  }
+]

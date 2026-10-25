@@ -1,0 +1,25 @@
+{
+  "name": "rally-for-kiest",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Website for Rally for Kiest, a community coalition keeping Kiest Tennis Center free and open to the kids of Dallas.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.1",
+    "@fontsource-variable/archivo": "^5.2.6",
+    "@fontsource-variable/source-serif-4": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.13.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.3"
+  }
+}
