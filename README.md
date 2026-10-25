@@ -6,12 +6,14 @@ Website for **Rally for Kiest**, a coalition of Dallas neighbors, parents, playe
 
 ## Stack
 
-- [Astro 5](https://astro.build) with content collections (typed with Zod)
+- [Astro 7](https://astro.build) with content collections (typed with Zod)
 - [Tailwind CSS 4](https://tailwindcss.com) via the Vite plugin
 - Self-hosted variable fonts via Fontsource
 - GitHub Actions CI: type check and build on every push
 
 ## Run it locally
+
+Needs Node 22.23.4 or newer (see `.nvmrc`).
 
 ```bash
 npm install

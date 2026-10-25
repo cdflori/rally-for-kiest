@@ -1,9 +1,10 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { file } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const source = z.object({
   label: z.string(),
-  url: z.string().url().optional(),
+  url: z.url().optional(),
 });
 
 /** The public record, from the center's opening to today. */
