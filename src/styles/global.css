@@ -39,6 +39,17 @@
   }
 }
 
+/*
+ * The page's content column. Gutters grow with the viewport so wide screens
+ * don't leave the content stranded in a narrow strip down the middle.
+ */
+@utility page-container {
+  width: 100%;
+  max-width: 100rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 5rem);
+}
+
 @utility font-condensed {
   font-stretch: 78%;
 }
