@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import { site } from '~/site.config';
+
+const steps = (await getCollection('milestones', ({ data }) => data.track === 'rfp')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+// "We are here" is the first step that isn't finished.
+const firstOpen = steps.findIndex(({ data }) => data.status !== 'done');
+const current = firstOpen === -1 ? steps.length - 1 : firstOpen;
+
+// The steps people can still act on get full cards under the progress bar.
+const open = steps.filter(({ data }) => data.status === 'in-progress' || data.status === 'asking');
+
+type Status = (typeof steps)[number]['data']['status'];
+
+const statusStyle: Record<Status, { label: string; class: string }> = {
+  done: { label: 'Done', class: 'bg-surround text-line' },
+  'in-progress': { label: 'Right now', class: 'bg-rally text-night' },
+  asking: { label: 'We’re asking', class: 'bg-ball text-night' },
+  upcoming: { label: 'Upcoming', class: 'bg-transparent text-ink ring-1 ring-ink/30' },
+  'ruled-against': { label: 'Ruled against', class: 'bg-ink text-line' },
+};
+
+const dotClass = (index: number) =>
+  index < current
+    ? 'bg-surround'
+    : index === current
+      ? 'bg-ball ring-4 ring-ball/40'
+      : 'bg-paper ring-2 ring-ink/30 ring-inset';
+
+// Parse as a calendar date: `new Date('YYYY-MM-DD')` is UTC midnight and can
+// render as the previous day in US time zones.
+const [year, month, day] = site.lastReviewed.split('-').map(Number);
+const lastReviewed = new Date(year, month - 1, day).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<section id="where-things-stand" aria-labelledby="where-things-stand-heading" class="scroll-mt-4 bg-paper text-ink">
+  <div class="page-container py-20 sm:py-24 lg:py-28">
+    <div class="max-w-2xl">
+      <h2
+        id="where-things-stand-heading"
+        class="font-display text-5xl leading-[0.92] font-extrabold tracking-tight uppercase [font-stretch:72%] sm:text-6xl"
+      >
+        Where things stand.
+      </h2>
+      <p class="mt-5 font-serif text-lg leading-relaxed text-pretty text-ink/80">
+        The city is writing a new contract for Kiest through a request for proposals (RFP). Here’s where the
+        process is, and where you can still be heard.
+      </p>
+    </div>
+
+    {/* Progress bar: a vertical list on small screens, a row of steps from lg up. */}
+    <div class="relative mt-12">
+      <div aria-hidden="true" class="absolute top-2.5 bottom-2.5 left-[9px] w-0.5 bg-ink/15 lg:hidden"></div>
+      <div
+        aria-hidden="true"
+        class="absolute top-[41px] right-[calc(100%/14)] left-[calc(100%/14)] hidden h-0.5 bg-ink/15 lg:block"
+      >
+      </div>
+      <div
+        aria-hidden="true"
+        class="absolute top-[41px] left-[calc(100%/14)] hidden h-0.5 bg-surround lg:block"
+        style={`width: calc(100% * ${current} / ${steps.length})`}
+      >
+      </div>
+
+      <ol class="relative grid gap-6 lg:grid-cols-7 lg:gap-0">
+        {
+          steps.map(({ data }, index) => (
+            <li
+              aria-current={index === current ? 'step' : undefined}
+              class="relative flex items-start gap-4 lg:flex-col lg:items-center lg:gap-3 lg:px-2 lg:pt-8 lg:text-center"
+            >
+              <span class:list={['relative z-10 size-5 shrink-0 rounded-full', dotClass(index)]} />
+              <div>
+                {index === current && (
+                  <span class="mb-1 inline-block rounded-full bg-night px-2.5 py-0.5 text-[0.7rem] font-bold tracking-wide text-line uppercase lg:absolute lg:top-0 lg:left-1/2 lg:mb-0 lg:-translate-x-1/2 lg:whitespace-nowrap">
+                    We are here
+                  </span>
+                )}
+                <p
+                  class:list={[
+                    'font-display leading-tight font-bold [font-stretch:85%]',
+                    index > current && 'text-ink/60',
+                  ]}
+                >
+                  {data.short ?? data.title}
+                </p>
+                <p class="mt-0.5 text-sm text-ink/60">
+                  <span class="sr-only">{statusStyle[data.status].label}: </span>
+                  {data.when}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    {
+      open.length > 0 && (
+        <ul class="mt-14 grid gap-6 md:grid-cols-2">
+          {open.map(({ data }) => (
+            <li class="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-ink/10 sm:p-8">
+              <div class="flex items-center justify-between gap-3">
+                <span
+                  class:list={[
+                    'rounded-full px-3 py-1 text-xs font-bold tracking-wide uppercase',
+                    statusStyle[data.status].class,
+                  ]}
+                >
+                  {statusStyle[data.status].label}
+                </span>
+                <span class="text-right text-sm text-ink/60">{data.when}</span>
+              </div>
+              <h3 class="mt-5 font-display text-3xl leading-tight font-extrabold [font-stretch:78%]">{data.title}</h3>
+              <p class="mt-3 font-serif leading-relaxed text-pretty text-ink/75">{data.detail}</p>
+              {data.status === 'asking' && (
+                <a
+                  href="/take-action"
+                  class="mt-6 w-fit rounded-full bg-night px-6 py-3 font-bold tracking-wide text-line uppercase [font-stretch:85%] transition hover:bg-court"
+                >
+                  Speak up for Kiest kids
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <p class="mt-8 text-sm text-ink/60">
+      Last reviewed {lastReviewed} ·{' '}
+      <a href="/tracker" class="font-semibold text-court underline underline-offset-4 hover:text-ink">
+        See the full tracker
+      </a>
+    </p>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+---
+import { Picture } from 'astro:assets';
+import coalitionPhoto from '~/assets/photos/i-am-kiest-city-hall.jpg';
+
+const commitments = [
+  {
+    title: 'Show up.',
+    body: 'We’ll be at every Park Board, committee and council meeting about Kiest, speaking for the kids who play there.',
+  },
+  {
+    title: 'Hold the contract to its promises.',
+    body: 'We’ll publish the winning contract’s youth-programming terms and track, in public, whether they’re kept.',
+  },
+  {
+    title: 'Keep it free for kids.',
+    body: 'We’ll push for free lessons, equipment and court time to be written into the contract, not left to goodwill.',
+  },
+  {
+    title: 'Work with whoever runs it.',
+    body: 'We’ll partner with the operator, coaches and families to keep programs growing.',
+  },
+];
+---
+
+<section aria-labelledby="commitment" class="bg-night text-line">
+  <div class="page-container grid gap-12 py-20 sm:py-24 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-28">
+    <div>
+      <h2
+        id="commitment"
+        class="font-display text-5xl leading-[0.92] font-extrabold tracking-tight text-balance uppercase [font-stretch:72%] sm:text-6xl"
+      >
+        Whoever wins the bid, <span class="text-ball">we’re staying.</span>
+      </h2>
+      <p class="mt-6 max-w-xl font-serif text-lg leading-relaxed text-pretty text-line/85">
+        The new contract will decide who runs Kiest. It won’t decide whether this community shows up.
+        Whoever is selected, we will:
+      </p>
+
+      {/* Native disclosures: keyboard and screen-reader friendly, no JavaScript. */}
+      <div class="mt-8 border-t border-line/15">
+        {
+          commitments.map(({ title, body }, i) => (
+            <details class="group border-b border-line/15" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                <span class="font-display text-xl font-bold tracking-wide uppercase [font-stretch:80%] sm:text-2xl">
+                  {title}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="grid size-8 shrink-0 place-items-center rounded-full ring-1 ring-line/40 transition group-open:bg-ball group-open:text-night group-open:ring-ball"
+                >
+                  <svg viewBox="0 0 16 16" class="size-4 transition-transform group-open:rotate-90">
+                    <path d="M5 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="max-w-lg pb-6 font-serif leading-relaxed text-pretty text-line/80">{body}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <Picture
+      src={coalitionPhoto}
+      alt="Kids, parents and coalition members at Dallas City Hall, each holding a yellow tennis-ball sign that reads “I am Kiest.”"
+      formats={['avif', 'webp']}
+      widths={[480, 800, 1200, 1600]}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      class="aspect-[3/2] w-full rounded-2xl object-cover object-[50%_78%]"
+    />
+  </div>
+</section>

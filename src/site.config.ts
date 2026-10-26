@@ -10,7 +10,7 @@ export const site = {
     'Rally for Kiest is a coalition of neighbors, parents, players and students working to keep Kiest Tennis Center a place where any kid in Dallas can play for free.',
 
   /** Date the "where things stand" content was last reviewed. Update when you edit the tracker. */
-  lastReviewed: '2026-10-24',
+  lastReviewed: '2026-10-25',
 
   links: {
     petition:
