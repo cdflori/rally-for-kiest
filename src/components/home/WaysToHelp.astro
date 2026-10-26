@@ -1,0 +1,79 @@
+---
+import { site } from '~/site.config';
+
+interface Way {
+  title: string;
+  body: string;
+  cta: string;
+  href: string;
+  external?: boolean;
+  featured?: boolean;
+}
+
+const ways: Way[] = [
+  {
+    title: 'Speak up',
+    body: 'Tell the city what Kiest means to you before the new RFP is final.',
+    cta: 'Take action',
+    href: '/take-action',
+    featured: true,
+  },
+  {
+    title: 'Join the coalition',
+    body: 'Help at meetings and events, translate, design, or spread the word.',
+    cta: 'Join us',
+    href: '/join',
+  },
+  // TODO: update the count from the petition page before launch (2,100+ was June 2026).
+  {
+    title: 'Sign the petition',
+    body: 'Join 2,100+ people who have already signed.',
+    cta: 'Sign the petition',
+    href: site.links.petition,
+    external: true,
+  },
+];
+
+// A link left blank in site.config hides its card instead of pointing nowhere.
+const visible = ways.filter((way) => way.href);
+---
+
+<section aria-labelledby="ways-to-help-heading" class="bg-paper text-ink">
+  <div class="page-container py-20 sm:py-24 lg:py-28">
+    <h2
+      id="ways-to-help-heading"
+      class="font-display text-5xl leading-[0.92] font-extrabold tracking-tight uppercase [font-stretch:72%] sm:text-6xl"
+    >
+      Rally with us.
+    </h2>
+
+    <ul class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        visible.map(({ title, body, cta, href, external, featured }) => (
+          <li
+            class:list={[
+              'flex flex-col rounded-2xl p-7 sm:p-8',
+              featured ? 'bg-night text-line' : 'bg-white ring-1 ring-ink/10',
+            ]}
+          >
+            <h3 class="font-display text-3xl leading-tight font-extrabold [font-stretch:78%]">{title}</h3>
+            <p class:list={['mt-3 flex-1 font-serif leading-relaxed text-pretty', featured ? 'text-line/85' : 'text-ink/75']}>
+              {body}
+            </p>
+            <a
+              href={href}
+              {...(external && { target: '_blank', rel: 'noopener' })}
+              class:list={[
+                'mt-8 w-fit rounded-full px-6 py-3 font-bold tracking-wide uppercase [font-stretch:85%] transition',
+                featured ? 'bg-ball text-night hover:bg-[#e6f56b]' : 'ring-2 ring-ink hover:bg-ink hover:text-line',
+              ]}
+            >
+              {cta}
+              {external && <span class="sr-only"> (opens in a new tab)</span>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

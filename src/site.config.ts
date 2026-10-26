@@ -12,6 +12,15 @@ export const site = {
   /** Date the "where things stand" content was last reviewed. Update when you edit the tracker. */
   lastReviewed: '2026-10-25',
 
+  /** Main pages, in the order the header and footer list them. */
+  nav: [
+    { href: '/mission', label: 'Mission' },
+    { href: '/timeline', label: 'Timeline' },
+    { href: '/tracker', label: 'Tracker' },
+    { href: '/take-action', label: 'Take action' },
+    { href: '/join', label: 'Join' },
+  ],
+
   links: {
     petition:
       'https://www.change.org/p/stop-city-of-dallas-from-awarding-rights-of-kiest-tennis-center-to-a-private-company',
@@ -25,6 +34,13 @@ export const site = {
     councilLookup: '',
     parksBoard: '',
     dtea: '',
+  },
+
+  /** Footer credit for whoever built the site. Leave `url` blank for plain text. */
+  // TODO: swap in the design firm's name and website once it has them.
+  credit: {
+    name: 'Christina Flores',
+    url: '',
   },
 
   /**

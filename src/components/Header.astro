@@ -1,18 +1,13 @@
 ---
+import { site } from '~/site.config';
+
 interface Props {
   /** Float over the page's first section (the home hero photo) instead of sitting on navy. */
   overlay?: boolean;
 }
 
 const { overlay = false } = Astro.props;
-
-const nav = [
-  { href: '/mission', label: 'Mission' },
-  { href: '/timeline', label: 'Timeline' },
-  { href: '/tracker', label: 'Tracker' },
-  { href: '/take-action', label: 'Take action' },
-  { href: '/join', label: 'Join' },
-];
+const { nav } = site;
 
 const current = Astro.url.pathname.replace(/\/$/, '');
 ---
