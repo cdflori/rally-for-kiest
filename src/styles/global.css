@@ -1,0 +1,55 @@
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/source-serif-4/opsz.css';
+@import 'tailwindcss';
+
+/*
+ * Palette and type from the design direction in HANDOFF.md.
+ * Ball yellow is reserved for the single main call to action on a page.
+ */
+@theme {
+  --color-night: #14294a;
+  --color-court: #1f4c86;
+  --color-rally: #2d91da;
+  --color-surround: #2e6a4f;
+  --color-line: #f5f7f4;
+  --color-ink: #15212e;
+  --color-paper: #eef2ee;
+  --color-ball: #d8eb3e;
+
+  --font-display: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+  --font-sans: var(--font-display);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-rally);
+    outline-offset: 3px;
+  }
+}
+
+/*
+ * The page's content column. Gutters grow with the viewport so wide screens
+ * don't leave the content stranded in a narrow strip down the middle.
+ */
+@utility page-container {
+  width: 100%;
+  max-width: 100rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 5rem);
+}
+
+@utility font-condensed {
+  font-stretch: 78%;
+}

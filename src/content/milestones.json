@@ -4,16 +4,22 @@
     "order": 1,
     "track": "rfp",
     "title": "Council sends Kiest back for a new RFP",
+    "short": "Council vote",
     "when": "June 24, 2026",
     "status": "done",
     "detail": "The council voted down the Kiest contract and directed that the new RFP be developed with community involvement.",
-    "sources": [{ "label": "City Council Annotated Agenda, June 24, 2026, Item 60, File 26-1082" }]
+    "sources": [
+      {
+        "label": "City Council Annotated Agenda, June 24, 2026, Item 60, File 26-1082"
+      }
+    ]
   },
   {
     "id": "committee-briefing",
     "order": 2,
     "track": "rfp",
     "title": "Park Board committee briefed on the new RFP",
+    "short": "Committee briefing",
     "when": "August 12, 2026",
     "status": "done",
     "detail": "The Ad Hoc Golf and Racquet Sports Committee received a staff briefing on the new Kiest RFP."
@@ -23,33 +29,57 @@
     "order": 3,
     "track": "rfp",
     "title": "Pickleball requirement appears in draft criteria",
+    "short": "Draft criteria",
     "when": "Fall 2026",
     "status": "in-progress",
     "detail": "The draft criteria add pickleball programming, which could mean converting tennis courts DTEA students use after school. It was not in the previous RFP and the community has not been consulted on it."
   },
   {
-    "id": "listening-session",
+    "id": "next-committee",
     "order": 4,
     "track": "rfp",
+    "title": "Next Park Board committee meeting",
+    "short": "Next committee meeting",
+    "when": "Not yet scheduled",
+    "status": "upcoming",
+    "detail": "The Ad Hoc Golf and Racquet Sports Committee has not set its next meeting. The city has said it will notify the coalition once a date is set, and we'll post it here.",
+    "sources": [
+      {
+        "label": "Dallas Park and Recreation Department, email to the coalition, October 2026"
+      }
+    ]
+  },
+  {
+    "id": "listening-session",
+    "order": 5,
+    "track": "rfp",
     "title": "Community listening session at Kiest",
-    "when": "Requested before November",
+    "short": "Listening session",
+    "when": "Before the criteria are final",
     "status": "asking",
     "detail": "We're asking the Parks Department to hold one listening session at Kiest before the RFP criteria are finalized. It has not been scheduled."
   },
   {
     "id": "rfp-release",
-    "order": 5,
+    "order": 6,
     "track": "rfp",
     "title": "New Kiest RFP released",
-    "when": "Expected November 2026",
+    "short": "RFP released",
+    "when": "Expected December or January",
     "status": "upcoming",
-    "detail": "Once the RFP is issued, the window to shape its criteria closes. We'll post the solicitation and its scoring here when it's out."
+    "detail": "The city now says the RFP specifications are still being discussed, so it won't go out in November as first expected. Once it's issued, the window to shape its criteria closes.",
+    "sources": [
+      {
+        "label": "Dallas Park and Recreation Department, email to the coalition, October 2026"
+      }
+    ]
   },
   {
     "id": "award",
-    "order": 6,
+    "order": 7,
     "track": "rfp",
     "title": "Proposals scored and contract awarded",
+    "short": "Contract awarded",
     "when": "To be announced",
     "status": "upcoming",
     "detail": "Whoever is selected, we'll publish the contract's youth-programming terms and track whether they are kept."
@@ -62,7 +92,11 @@
     "when": "June 22, 2026",
     "status": "done",
     "detail": "A coalition member requested scoring sheets, evaluator records, contract history and communications about the original RFP under the Texas Public Information Act.",
-    "sources": [{ "label": "City of Dallas reference no. C008273-062226" }]
+    "sources": [
+      {
+        "label": "City of Dallas reference no. C008273-062226"
+      }
+    ]
   },
   {
     "id": "ag-referral",
@@ -72,7 +106,11 @@
     "when": "July 7–15, 2026",
     "status": "done",
     "detail": "The city sought to withhold records under competitive-bidding and third-party exemptions. The requestor filed responses on July 8 and July 15.",
-    "sources": [{ "label": "OAG tracking ID OR26036423" }]
+    "sources": [
+      {
+        "label": "OAG tracking ID OR26036423"
+      }
+    ]
   },
   {
     "id": "fee",
@@ -91,7 +129,11 @@
     "when": "September 9, 2026",
     "status": "ruled-against",
     "detail": "The Attorney General's office allowed the city to withhold the requested records under Section 552.104, the competitive-bidding exemption.",
-    "sources": [{ "label": "OAG tracking ID OR26036423" }]
+    "sources": [
+      {
+        "label": "OAG tracking ID OR26036423"
+      }
+    ]
   },
   {
     "id": "re-request",

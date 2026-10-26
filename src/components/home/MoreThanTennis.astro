@@ -1,0 +1,38 @@
+---
+const pillars = [
+  {
+    title: 'Free lessons and equipment',
+    body: 'Rackets, balls and coaching are provided, so cost is never the reason a kid can’t play.',
+  },
+  {
+    title: 'Tutoring and mentoring',
+    body: 'Beyond the court, kids get help with schoolwork and mentors who stay with them from their first lesson to their senior year.',
+  },
+  {
+    title: 'Funded by grants',
+    body: 'The programs run largely on grants from partners like the USTA Foundation and the Nowitzki Foundation.',
+  },
+];
+---
+
+<section aria-labelledby="more-than-tennis" class="bg-paper text-ink">
+  <div class="page-container grid gap-12 py-20 sm:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16 lg:py-28">
+    <h2
+      id="more-than-tennis"
+      class="font-display text-5xl leading-[0.92] font-extrabold tracking-tight uppercase [font-stretch:72%] sm:text-6xl"
+    >
+      More than tennis.
+    </h2>
+
+    <ul class="grid gap-10 sm:grid-cols-3 sm:gap-8">
+      {
+        pillars.map(({ title, body }) => (
+          <li class="border-t-2 border-court pt-5">
+            <h3 class="font-display text-2xl leading-tight font-extrabold [font-stretch:80%]">{title}</h3>
+            <p class="mt-3 font-serif leading-relaxed text-pretty text-ink/75">{body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

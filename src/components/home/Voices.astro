@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+
+const voices = (await getCollection('voices')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section aria-labelledby="voices-heading" class="bg-surround text-line">
+  <div class="page-container grid gap-12 py-20 sm:py-24 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-16 lg:py-28">
+    <div>
+      <p class="font-semibold text-line/75">Voices from Kiest</p>
+      <h2
+        id="voices-heading"
+        class="mt-3 font-display text-5xl leading-[0.92] font-extrabold tracking-tight text-balance uppercase [font-stretch:72%] sm:text-6xl"
+      >
+        25 years of community <span class="text-ball">cannot be outsourced.</span>
+      </h2>
+    </div>
+
+    {/* Without JavaScript every quote shows, stacked. The script turns it into one-at-a-time. */}
+    <div data-voices>
+      <ul class="grid gap-12" data-voices-list>
+        {
+          voices.map(({ data }, index) => (
+            <li data-voice={index}>
+              <figure>
+                <blockquote class="font-display text-3xl leading-snug font-semibold text-pretty [font-stretch:88%] sm:text-4xl">
+                  <span aria-hidden="true" class="mb-2 block font-serif text-7xl leading-none text-ball">
+                    “
+                  </span>
+                  {data.quote}
+                </blockquote>
+                <figcaption class="mt-6">
+                  <span class="block font-bold">{data.name}</span>
+                  <span class="text-line/75">
+                    {data.role}
+                    {data.context && <span class="block text-sm text-line/60">{data.context}</span>}
+                  </span>
+                </figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+
+      {
+        voices.length > 1 && (
+          <div class="mt-10 hidden items-center gap-4" data-voices-controls>
+            <button
+              type="button"
+              data-step="-1"
+              aria-label="Previous quote"
+              class="grid size-11 place-items-center rounded-full ring-1 ring-line/50 transition hover:bg-line hover:text-surround"
+            >
+              <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              data-step="1"
+              aria-label="Next quote"
+              class="grid size-11 place-items-center rounded-full bg-ball text-night transition hover:brightness-95"
+            >
+              <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+            <p class="ml-2 text-sm text-line/75 tabular-nums" aria-live="polite" data-voices-status></p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('[data-voices]')) {
+    const items = [...root.querySelectorAll<HTMLElement>('[data-voice]')];
+    const controls = root.querySelector<HTMLElement>('[data-voices-controls]');
+    const status = root.querySelector<HTMLElement>('[data-voices-status]');
+    if (items.length < 2 || !controls || !status) continue;
+
+    // Stack every quote in one grid cell so the section is as tall as the
+    // longest quote and the page doesn't jump when switching.
+    for (const item of items) item.style.gridArea = '1 / 1';
+
+    let active = 0;
+    const show = (index: number) => {
+      active = (index + items.length) % items.length;
+      items.forEach((item, i) => {
+        item.style.visibility = i === active ? 'visible' : 'hidden';
+        item.inert = i !== active;
+        item.setAttribute('aria-hidden', String(i !== active));
+      });
+      status.textContent = `${active + 1} of ${items.length}`;
+    };
+
+    for (const button of controls.querySelectorAll<HTMLButtonElement>('button')) {
+      button.addEventListener('click', () => show(active + Number(button.dataset.step)));
+    }
+
+    controls.classList.replace('hidden', 'flex');
+    show(0);
+  }
+</script>

@@ -29,6 +29,8 @@ const milestones = defineCollection({
     order: z.number(),
     track: z.enum(['rfp', 'records']),
     title: z.string(),
+    /** A two- or three-word label for compact views like the home page progress bar. */
+    short: z.string().optional(),
     when: z.string(),
     status: z.enum(['done', 'in-progress', 'upcoming', 'ruled-against', 'asking']),
     detail: z.string(),
@@ -46,4 +48,22 @@ const facts = defineCollection({
   }),
 });
 
-export const collections = { timeline, milestones, facts };
+/**
+ * Quotes from players, parents and coalition members. Quote people word for
+ * word; mark cuts with an ellipsis. Get permission before adding anything that
+ * wasn't said in public.
+ */
+const voices = defineCollection({
+  loader: file('src/content/voices.json'),
+  schema: z.object({
+    order: z.number(),
+    quote: z.string(),
+    name: z.string(),
+    /** Who they are, e.g. "Kiest player, age 15" or "Parent of a DTEA player". */
+    role: z.string(),
+    /** Where it was said, if it was public. */
+    context: z.string().optional(),
+  }),
+});
+
+export const collections = { timeline, milestones, facts, voices };
